@@ -1,0 +1,65 @@
+<h1>{{ titlePage }}</h1>
+<!-- Row -->
+<div class="row content">
+  <!-- Col -->
+  <div class="col-sm-4 video">
+    <app-albums-details [album]="selectedAlbum" (onPlay)="playParent($event)">
+    </app-albums-details>
+  </div>
+  <!-- Col -->
+  <div class="col-sm-8 music">
+    <app-search (searchAlbums)="search($event)"></app-search>
+
+    <!-- card -->
+    <div class="card" *ngFor="let album of albums">
+      <div class="card-header">
+        {{ album.ref }}
+        <img
+          class="glyph-icon"
+          src="./assets/svg/play-button.svg"
+          *ngIf="playingAlbum == album.id"
+        />
+      </div>
+
+      <div class="card-body">
+        <h5 class="card-title">{{ album.title }}</h5>
+        <p class="card-text">{{ album.description }}</p>
+        <a
+          href="#"
+          class="btn btn-outline-primary"
+          role="button"
+          *ngFor="let tag of album.tags"
+          >{{ tag }}</a
+        >
+        <img class="glyph-icon" src="./assets/svg/si-glyph-heart.svg" /><small
+          >{{ album.like }}</small
+        >
+        <img class="glyph-icon" src="./assets/svg/si-glyph-timer.svg" />
+        <small>{{ album.duration }}</small>
+        <button class="btn btn-primary" (click)="onSelect(album)">
+          Détail
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- pagination -->
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1">Previous</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">1</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">2</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">3</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+</div>
