@@ -7,9 +7,20 @@ import { AppComponent } from './app.component';
 import { AlbumsComponent } from './albums/albums.component';
 import { AlbumsDetailsComponent } from './albums/albums-details/albums-details.component';
 import { SearchComponent } from './albums/search/search.component';
+import { AlbumDescriptionComponent } from './album-description/album-description.component';
+import { LoginComponent } from './login/login.component';
+import { NotfoundComponent } from './notfound/notfound.component';
 
 @NgModule({
-  declarations: [AppComponent, AlbumsComponent, AlbumsDetailsComponent, SearchComponent],
+  declarations: [
+    AppComponent,
+    AlbumsComponent,
+    AlbumsDetailsComponent,
+    SearchComponent,
+    AlbumDescriptionComponent,
+    LoginComponent,
+    NotfoundComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

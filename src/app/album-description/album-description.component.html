@@ -1,0 +1,23 @@
+<div class="card" *ngIf="album">
+  <div class="card-header">
+    <h5 class="card-title">{{ album.title }}</h5>
+  </div>
+  <div class="card-body">
+    <h6>Nom de l'album : {{ album.name }}</h6>
+    <p class="card-text">{{ album.description }}</p>
+    <p>Durée : {{ album.duration || 0 }} min</p>
+    <p>Like: {{ album.like || "no Like" }}</p>
+    <ul *ngIf="album.tags" class="list-inline">
+      <li class="list-inline-item" *ngFor="let tag of album.tags">
+        <span class="badge bg-info">{{ tag }}</span>
+      </li>
+    </ul>
+    <img
+      *ngIf="album.url"
+      width="300"
+      src="{{ album.url }}"
+      class="rounded mx-auto d-block"
+      alt="{{ album.name }}"
+    />
+  </div>
+</div>

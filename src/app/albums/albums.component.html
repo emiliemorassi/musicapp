@@ -22,7 +22,11 @@
       </div>
 
       <div class="card-body">
-        <h5 class="card-title">{{ album.title }}</h5>
+        <h5 class="card-title">
+          <a class="text-info" routerLink="/album/{{ album.id }}">{{
+            album.title | titlecase
+          }}</a>
+        </h5>
         <p class="card-text">{{ album.description }}</p>
         <a
           href="#"

@@ -9,14 +9,14 @@
     <img class="card-img-top" src="{{ defaultImage }}" alt="{{ album.name }}" />
   </ng-template>
   <div class="card-body">
-    <h5 class="card-title">{{ album.title }}</h5>
+    <h5 class="card-title">{{ album.title | titlecase }}</h5>
     <p class="card-text">{{ album.ref }}</p>
-    <a href="#" class="btn btn-primary" (click)="clickPlay(album)">Play >> </a>
+    <a class="btn btn-primary" (click)="clickPlay(album)">Play >> </a>
   </div>
 
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let song of songs">
-      {{ song }}
+      {{ song | titlecase }}
     </li>
   </ul>
 </div>
