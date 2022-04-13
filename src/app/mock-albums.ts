@@ -182,19 +182,11 @@ export const ALBUM_LISTS = [
   },
   {
     id: '3',
-    list: [
-      'et',
-      'qui',
-      'consectetur',
-      'reprehenderit',
-      'sunt',
-      'Lorem',
-      'laborum',
-    ],
+    list: ['et', 'qui', 'consectetur'],
   },
   {
     id: '4',
-    list: ['nulla', 'velit', 'do'],
+    list: ['nulla', 'velit', 'do', 'reprehenderit', 'sunt', 'Lorem', 'laborum'],
   },
   {
     id: '5',
@@ -210,14 +202,22 @@ export const ALBUM_LISTS = [
   },
   {
     id: '6',
-    list: ['sint', 'minim', 'nisi', 'labore', 'consequat', 'duis', 'elit'],
+    list: ['sint', 'minim', 'nisi'],
   },
   {
     id: '7',
-    list: ['in', 'nostrud', 'deserunt'],
+    list: ['in', 'nostrud'],
   },
   {
     id: '8',
     list: ['in', 'nostrud'],
+  },
+  {
+    id: '9',
+    list: ['labore', 'consequat'],
+  },
+  {
+    id: '10',
+    list: ['duis', 'elit'],
   },
 ];

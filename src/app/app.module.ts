@@ -10,6 +10,8 @@ import { SearchComponent } from './albums/search/search.component';
 import { AlbumDescriptionComponent } from './album-description/album-description.component';
 import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { PaginateComponent } from './paginate/paginate.component';
+import { AudioPlayerComponent } from './audio-player/audio-player.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AlbumDescriptionComponent,
     LoginComponent,
     NotfoundComponent,
+    PaginateComponent,
+    AudioPlayerComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

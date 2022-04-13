@@ -1,0 +1,16 @@
+<div *ngIf="showPlayer" class="alert alert-primary" role="alert">
+  {{ albumPlaying.title }} par {{ albumPlaying.name }}
+  <div class="alert alert-primary" role="alert">
+    <div class="progress">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        [style.width]="ratio + '%'"
+        aria-valuenow=""
+        aria-valuemin="0"
+        aria-valuemax="100"
+      ></div>
+    </div>
+    {{ current }}/{{ total }}
+  </div>
+</div>

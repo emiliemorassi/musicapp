@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 import { Album } from './album';
 import { List } from './list';
@@ -10,6 +11,10 @@ import { ALBUMS, ALBUM_LISTS } from './mock-albums';
 export class AlbumService {
   private _albums: Album[] = ALBUMS;
   private _albumList: List[] = ALBUM_LISTS;
+
+  // sendCurrentNumberPage = new Subject<number>();
+
+  subjectAlbum: Subject<Album> = new Subject<Album>();
 
   constructor() {}
 
@@ -40,4 +45,24 @@ export class AlbumService {
   search(word: string): Album[] {
     return this._albums.filter((album) => album.title.includes(word));
   }
+
+  switchOn(album: Album): void {
+    this._albums.forEach((a) => {
+      if (a.id === album.id) {
+        album.status = 'on';
+      } else {
+        a.status = 'off';
+      }
+    });
+    this.subjectAlbum.next(album);
+  }
+  switchOff(album: Album): void {
+    this._albums.forEach((a) => {
+      a.status = 'off';
+    });
+  }
+
+  // currentPage(page:number){
+  //   return this.sendCurrentNumberPage.next(page);
+  // }
 }

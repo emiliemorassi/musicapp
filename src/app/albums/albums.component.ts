@@ -14,6 +14,7 @@ export class AlbumsComponent implements OnInit {
   albums: Album[] = ALBUMS;
   selectedAlbum: Album = new Album();
   playingAlbum: string = '';
+  status: string = '';
 
   constructor(private albumService: AlbumService) {
     // this.albumService.getAllAlbums();
@@ -28,14 +29,23 @@ export class AlbumsComponent implements OnInit {
     this.selectedAlbum = album;
   }
 
-  playParent(album: Album): void {
-    this.playingAlbum = album.id;
-    // console.log(album);
+  // playParent(album: Album): void {
+  //   this.playingAlbum = album.id;
+  // }
+  playParent($event: Album) {
+    this.status = $event.id;
+    console.log($event);
+    // console.log($event.id);
+    this.albumService.switchOn($event);
   }
 
   search($event: any) {
     if ($event) {
       this.albums = $event;
     }
+  }
+
+  paginate(album: { start: number; end: number }) {
+    this.albums = this.albumService.paginate(album.start, album.end);
   }
 }
