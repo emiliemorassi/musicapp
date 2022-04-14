@@ -11,18 +11,34 @@ import { ALBUMS } from '../mock-albums';
 })
 export class AlbumsComponent implements OnInit {
   titlePage: string = 'Page principale Albums Music';
-  albums: Album[] = ALBUMS;
+  // albums: Album[] = ALBUMS;
+  albums: Album[] = [];
   selectedAlbum: Album = new Album();
   playingAlbum: string = '';
   status: string = '';
+  count: any;
 
   constructor(private albumService: AlbumService) {
     // this.albumService.getAllAlbums();
-    console.log(this.albumService.count());
+    // console.log(this.albumService.count());
+    // console.log(
+    //   this.albumService
+    //     .getAllAlbums()
+    //     .subscribe((albums) => console.log('-*-*-*-*---*', albums))
+    // );
   }
 
   ngOnInit(): void {
-    this.albums = this.albumService.paginate(0, 5);
+    // this.albums = this.albumService.paginate(0, 5);
+    this.albumService.paginate(0, 5).subscribe((albums) => {
+      console.log(albums);
+
+      this.albums = albums;
+    });
+    this.count = this.albumService
+      .count()
+      .subscribe((count) => (this.count = count));
+    console.log(this.count);
   }
 
   onSelect(album: Album): void {
@@ -45,7 +61,12 @@ export class AlbumsComponent implements OnInit {
     }
   }
 
+  // paginate(album: { start: number; end: number }) {
+  //   this.albums = this.albumService.paginate(album.start, album.end);
+  // }
   paginate(album: { start: number; end: number }) {
-    this.albums = this.albumService.paginate(album.start, album.end);
+    this.albumService
+      .paginate(album.start, album.end)
+      .subscribe((albums) => (this.albums = albums));
   }
 }

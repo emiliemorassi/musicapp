@@ -14,8 +14,8 @@
     <a class="btn btn-primary" (click)="clickPlay(album)">Play >> </a>
   </div>
 
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let song of songs">
+  <ul *ngIf="songs" class="list-group">
+    <li class="list-group-item" *ngFor="let song of songs.list">
       {{ song | titlecase }}
     </li>
   </ul>

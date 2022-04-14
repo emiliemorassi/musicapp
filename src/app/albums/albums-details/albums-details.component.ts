@@ -15,24 +15,30 @@ export class AlbumsDetailsComponent implements OnInit {
   @Input() album: Album = new Album();
   @Output() onPlay: EventEmitter<Album> = new EventEmitter();
 
-  albumLists: List[] = ALBUM_LISTS;
+  // albumLists: List[] = ALBUM_LISTS;
   list: List | undefined;
-  songs: Array<string> | undefined = [];
+  songs: List | undefined;
 
   constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {}
 
-  clickPlay(album: Album) {
-    this.onPlay.emit(album);
+  ngOnChanges() {
+    // if (this.album) {
+    //   this.list = this.albumService.getAlbumList(this.album.ref);
+    //   this.songs = this.albumLists.find(
+    //     (elem) => elem.id === this.album.id
+    //   )?.list;
+    // }
+
+    if (this.album) {
+      this.albumService
+        .getAlbumList(this.album.id)
+        .subscribe((songs: List | undefined) => (this.songs = songs));
+    }
   }
 
-  ngOnChanges() {
-    if (this.album) {
-      this.list = this.albumService.getAlbumList(this.album.ref);
-      this.songs = this.albumLists.find(
-        (elem) => elem.id === this.album.id
-      )?.list;
-    }
+  clickPlay(album: Album) {
+    this.onPlay.emit(album);
   }
 }

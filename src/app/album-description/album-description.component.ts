@@ -18,9 +18,9 @@ export class AlbumDescriptionComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
+
     if (id) {
-      this.album = this.albumService.getAlbum(id);
-      // console.log(this.album);
+      this.albumService.getAlbum(id).subscribe((album) => (this.album = album));
     }
   }
 }
