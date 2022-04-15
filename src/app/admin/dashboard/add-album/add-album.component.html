@@ -1,0 +1,123 @@
+<p>add-album works!</p>
+<form [formGroup]="albumForm" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label for="ref">Référence</label>
+    <input
+      required
+      formControlName="ref"
+      class="form-control"
+      placeholder="Référence"
+      type="text"
+    />
+    <div *ngIf="validInput('ref', 'required')" class="alert alert-danger">
+      La référence est requise
+    </div>
+
+    <label for="name">Nom de l'artiste</label>
+    <input
+      required
+      minLength="2"
+      formControlName="name"
+      class="form-control"
+      placeholder="Nom de l'artiste"
+      type="text"
+    />
+
+    <div *ngIf="validInput('name', 'required')" class="alert alert-danger">
+      Le nom est requis
+    </div>
+    <div *ngIf="validInput('name', 'minlength')" class="alert alert-danger">
+      Le nom doit contenir au moins 2 caractères
+    </div>
+
+    <label for="title">Titre de l'album</label>
+    <input
+      required
+      formControlName="title"
+      class="form-control"
+      placeholder="Titre de l'album"
+      type="text"
+    />
+    <div *ngIf="validInput('title', 'required')" class="alert alert-danger">
+      Le titre de l'album est requis
+    </div>
+
+    <label for="description">Description de l'album</label>
+    <textarea
+      class="form-control"
+      formControlName="description"
+      cols="30"
+      rows="10"
+      required
+    ></textarea>
+    <div
+      *ngIf="validInput('description', 'required')"
+      class="alert alert-danger"
+    >
+      La description de l'album est requise
+    </div>
+
+    <label for="duration">Durée de l'album</label>
+    <input
+      class="form-control"
+      type="number"
+      required
+      formControlName="duration"
+    />
+    <div *ngIf="validInput('duration', 'required')" class="alert alert-danger">
+      La durée est requise
+    </div>
+
+    <label for="url">Url de la pochette de l'album</label>
+    <input
+      class="form-control"
+      type="text"
+      required
+      formControlName="url"
+      placeholder="Url de la pochette de l'album"
+    />
+    <div *ngIf="validInput('url', 'required')" class="alert alert-danger">
+      L'Url de la pochette de l'album est requise
+    </div>
+
+    <label for="like">Likes</label>
+    <input
+      class="form-control"
+      type="text"
+      required
+      formControlName="like"
+      placeholder="Likes"
+    />
+    <div *ngIf="validInput('like', 'required')" class="alert alert-danger">
+      Like est requis
+    </div>
+
+    <label for="tags">Tags</label>
+    <input
+      class="form-control"
+      type="text"
+      required
+      formControlName="tags"
+      placeholder="Tags"
+    />
+    <div *ngIf="validInput('like', 'required')" class="alert alert-danger">
+      Tags est requis
+    </div>
+
+    <div class="form-check">
+      <label for="status" class="form-control-input">Status</label>
+      <input
+        class="form-control-input"
+        type="checkbox"
+        formControlName="status"
+        placeholder="Status"
+      />
+    </div>
+
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+      Valider
+    </button>
+  </div>
+</form>
+
+id, ref, name, title, description, duration, url, like, tags, status,

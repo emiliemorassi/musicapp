@@ -1,1 +1,27 @@
 <p>dashboard works!</p>
+<div class="container-fuild principal">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            routerLink="/listalbums"
+            routerLinkActive="linkActive"
+            >Tous les albums</a
+          >
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/add" routerLinkActive="linkActive"
+            >Ajouter
+          </a>
+        </li>
+        <!-- <li class="nav-item active">
+          <a class="nav-link">Supprimer </a>
+        </li> -->
+      </ul>
+    </div>
+  </nav>
+
+  <router-outlet></router-outlet>
+</div>

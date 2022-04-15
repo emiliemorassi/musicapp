@@ -8,6 +8,7 @@ import { SearchComponent } from './albums/search/search.component';
 import { AlbumsDetailsComponent } from './albums/albums-details/albums-details.component';
 import { SharedModule } from '../shared/shared.module';
 import { PaginateComponent } from './paginate/paginate.component';
+import { NotFoundComponent } from '../shared/notfound/notfound.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({

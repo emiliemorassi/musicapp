@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddAlbumComponent } from './admin/dashboard/add-album/add-album.component';
 import { LoginComponent } from './admin/login/login.component';
 import { NotFoundComponent } from './shared/notfound/notfound.component';
 import { GuardService } from './shared/services/guard.service';
@@ -22,7 +23,7 @@ const routes: Routes = [
       import('./album/album.module').then((m) => m.AlbumModule),
     canActivate: [GuardService],
   },
-  { path: '**', component: NotFoundComponent },
+  // { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

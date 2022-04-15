@@ -4,11 +4,17 @@ import { LoginComponent } from './login/login.component';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { GuardService } from '../shared/services/guard.service';
-import { NotFoundError } from 'rxjs';
+import { AddAlbumComponent } from './dashboard/add-album/add-album.component';
+import { NotFoundComponent } from '../shared/notfound/notfound.component';
+import { ListAlbumComponent } from './dashboard/list-album/list-album.component';
 
 @NgModule({
-  declarations: [LoginComponent, DashboardComponent],
+  declarations: [
+    LoginComponent,
+    DashboardComponent,
+    AddAlbumComponent,
+    ListAlbumComponent,
+  ],
   imports: [
     CommonModule,
     SharedModule,
@@ -16,8 +22,18 @@ import { NotFoundError } from 'rxjs';
       {
         path: '',
         component: DashboardComponent,
+        children: [
+          {
+            path: 'add',
+            component: AddAlbumComponent,
+          },
+          {
+            path: 'listalbums',
+            component: ListAlbumComponent,
+          },
+        ],
       },
-      // { path: '**', component: NotFoundError },
+      { path: '**', component: NotFoundComponent },
     ]),
   ],
   exports: [LoginComponent, DashboardComponent],
