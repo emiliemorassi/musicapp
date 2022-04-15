@@ -1,8 +1,9 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Album } from 'src/app/album';
-import { AlbumService } from 'src/app/album.service';
-import { List } from 'src/app/list';
-import { ALBUM_LISTS } from 'src/app/mock-albums';
+import { AlbumService } from 'src/app/shared/services/album.service';
+
+import { Album } from '../../../shared/classes/album';
+
+import { List } from '../../../shared/classes/list';
 
 @Component({
   selector: 'app-albums-details',

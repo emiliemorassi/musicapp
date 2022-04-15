@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Album } from '../album';
-import { AlbumService } from '../album.service';
+import { Album } from '../../shared/classes/album';
+import { AlbumService } from 'src/app/shared/services/album.service';
 
 @Component({
   selector: 'app-audio-player',

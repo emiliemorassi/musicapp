@@ -1,7 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Album } from 'src/app/album';
-import { AlbumService } from 'src/app/album.service';
+import { AlbumService } from 'src/app/shared/services/album.service';
+
+import { Album } from '../../../shared/classes/album';
 
 @Component({
   selector: 'app-search',

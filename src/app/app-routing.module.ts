@@ -1,23 +1,28 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AlbumDescriptionComponent } from './album-description/album-description.component';
-import { AlbumsComponent } from './albums/albums.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { GuardService } from './guard.service';
-import { LoginComponent } from './login/login.component';
-import { NotfoundComponent } from './notfound/notfound.component';
+import { LoginComponent } from './admin/login/login.component';
+import { NotFoundComponent } from './shared/notfound/notfound.component';
+import { GuardService } from './shared/services/guard.service';
 
 const routes: Routes = [
-  { path: 'albums', component: AlbumsComponent },
-  { path: '', redirectTo: '/albums', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  {
+    path: '',
+    component: LoginComponent,
+    // canActivate: [GuardService],
+  },
   {
     path: 'dashboard',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
     canActivate: [GuardService],
-    component: DashboardComponent,
   },
-  { path: 'album/:id', component: AlbumDescriptionComponent },
-  { path: '**', component: NotfoundComponent },
+  {
+    path: 'albums',
+    loadChildren: () =>
+      import('./album/album.module').then((m) => m.AlbumModule),
+    canActivate: [GuardService],
+  },
+  { path: '**', component: NotFoundComponent },
 ];
 
 @NgModule({

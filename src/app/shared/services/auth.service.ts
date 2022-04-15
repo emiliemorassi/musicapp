@@ -28,9 +28,7 @@ export class AuthService {
 
   logout() {
     this.authentification.signOut().then(() => {
-      this.router.navigate(['/albums'], {
-        queryParams: { message: `Success logout` },
-      });
+      this.router.navigate(['']);
     });
   }
 

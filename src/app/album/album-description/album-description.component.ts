@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Album } from '../album';
-import { AlbumService } from '../album.service';
+import { AlbumService } from 'src/app/shared/services/album.service';
+import { Album } from '../../shared/classes/album';
 
 @Component({
   selector: 'app-album-description',

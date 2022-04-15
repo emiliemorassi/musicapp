@@ -1,4 +1,4 @@
-import { Album } from './album';
+import { Album } from '../classes/album';
 
 export const ALBUMS: Album[] = [
   {

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { interval, Observable } from 'rxjs';
 import { take, map } from 'rxjs/operators';
-import { AuthService } from './auth.service';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   time: string = '';
   count: Observable<number> = new Observable<number>();
 
-  constructor(public auth: AuthService) {
+  constructor(public auth: AuthService, private router: Router) {
     this.count = interval(1000);
 
     const interval$ = this.count.pipe(

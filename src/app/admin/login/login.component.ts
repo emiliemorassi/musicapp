@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
+
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +14,12 @@ export class LoginComponent implements OnInit {
   messageError: string = '';
 
   constructor(private authService: AuthService, private router: Router) {
-    if (this.authService.authentificated()) {
-      this.router.navigate(['/dashboard'], {
-        queryParams: { message: 'Success' },
-      });
-    }
+    // if (this.authService.authentificated()) {
+    //   console.log('redirection');
+    //   this.router.navigate(['/dashboard'], {
+    //     queryParams: { message: 'Success' },
+    //   });
+    // }
   }
 
   ngOnInit(): void {}
@@ -27,9 +30,7 @@ export class LoginComponent implements OnInit {
     this.authService
       .auth(form.value['email'], form.value['password'])
       .then(() => {
-        this.router.navigate(['/dashboard'], {
-          queryParams: { message: 'Success' },
-        });
+        this.router.navigate(['/dashboard']);
       })
       .catch((error) => {
         this.messageError = "Erreur d'identifiant ou de mot de passe";

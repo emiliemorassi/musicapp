@@ -6,34 +6,21 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 import { AppRoutingModule } from './app-routing.module';
+import { AlbumModule } from './album/album.module';
+import { AdminModule } from './admin/admin.module';
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
-import { AlbumsComponent } from './albums/albums.component';
-import { AlbumsDetailsComponent } from './albums/albums-details/albums-details.component';
-import { SearchComponent } from './albums/search/search.component';
-import { AlbumDescriptionComponent } from './album-description/album-description.component';
-import { LoginComponent } from './login/login.component';
-import { NotfoundComponent } from './notfound/notfound.component';
-import { PaginateComponent } from './paginate/paginate.component';
-import { AudioPlayerComponent } from './audio-player/audio-player.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    AlbumsComponent,
-    AlbumsDetailsComponent,
-    SearchComponent,
-    AlbumDescriptionComponent,
-    LoginComponent,
-    NotfoundComponent,
-    PaginateComponent,
-    AudioPlayerComponent,
-    DashboardComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    SharedModule,
+    AlbumModule,
+    AdminModule,
     HttpClientModule,
     AngularFireModule.initializeApp({
       apiKey: 'AIzaSyAURadRzhggNuksmAilZVRSVSBchbkN4pE',

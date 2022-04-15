@@ -4,10 +4,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import * as _ from 'lodash';
 
-import { Album } from './album';
-import { List } from './list';
-import { ALBUMS, ALBUM_LISTS } from './mock-albums';
-import { DataInterface } from './data.interface';
+import { DataInterface } from '../interfaces/data.interface';
+import { Album } from '../classes/album';
+import { List } from '../classes/list';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,8 +17,6 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class AlbumService {
-  private _albums: Album[] = ALBUMS;
-  private _albumList: List[] = ALBUM_LISTS;
   sendCurrentNumberPage = new Subject<number>();
   subjectAlbum: Subject<Album> = new Subject<Album>();
 
@@ -29,13 +26,15 @@ export class AlbumService {
   constructor(private http: HttpClient) {}
 
   getAllAlbums(): Observable<Album[]> {
-    return this.http.get<Album[]>(this.albumsUrl + '/.json', httpOptions).pipe(
-      map((albums) => {
-        return this._albums.sort((a, b) => {
-          return b.duration - a.duration;
-        });
-      })
-    );
+    return this.http
+      .get<Album[]>(this.albumsUrl + '/albums/.json', httpOptions)
+      .pipe(
+        map((albums) => {
+          return albums.sort((a, b) => {
+            return b.duration - a.duration;
+          });
+        })
+      );
   }
 
   getAlbum(id: string): Observable<Album | undefined> {
@@ -83,18 +82,18 @@ export class AlbumService {
   }
 
   switchOn(album: Album): void {
-    this._albums.forEach((a) => {
-      if (a.id === album.id) {
-        album.status = 'on';
-      } else {
-        a.status = 'off';
-      }
-    });
-    this.subjectAlbum.next(album);
+    album.status = 'on';
+    this.http
+      .put<void>(this.albumsUrl + `/albums/${album.id}/.json`, album)
+      .subscribe(() => {
+        this.subjectAlbum.next(album);
+      });
   }
+
   switchOff(album: Album): void {
-    this._albums.forEach((a) => {
-      a.status = 'off';
-    });
+    album.status = 'off';
+    this.http
+      .put<void>(this.albumsUrl + `/albums/${album.id}/.json`, album)
+      .subscribe(() => {});
   }
 }
