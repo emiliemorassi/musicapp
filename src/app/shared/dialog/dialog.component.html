@@ -1,0 +1,20 @@
+<div id="dialog-content-wrapper">
+  <header id="dialog-header">
+    <h1 id="dialog-title">Placeholder title</h1>
+  </header>
+  <section id="dialog-body">
+    <p>Placeholder description</p>
+  </section>
+  <footer id="dialog-footer">
+    <button
+      mat-raised-button
+      id="dialog-action-button"
+      (click)="actionFunction()"
+    >
+      {{ modalData.back }}
+    </button>
+    <button mat-raised-button id="dialog-cancel-button" (click)="closeDialog()">
+      {{ modalData.close }}
+    </button>
+  </footer>
+</div>
