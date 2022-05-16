@@ -1,1 +1,28 @@
-<p>list-album works!</p>
+<div class="table-responsive">
+  <table class="table table-dark table-hover">
+    <thead>
+      <th scope="row">Id</th>
+      <th scope="row">Artiste</th>
+      <th scope="row">Title</th>
+      <th scope="row">Modifier</th>
+      <th scope="row">Supprimer</th>
+    </thead>
+    <tbody>
+      <tr scope="row" *ngFor="let album of albums">
+        <td>{{ album.id }}</td>
+        <td>{{ album.name }}</td>
+        <td>{{ album.title }}</td>
+        <td>
+          <button class="btn btn-light" routerLink="/edit/{{ album.id }}">
+            Modifier
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-light" (click)="deleteAlbum(album)">
+            Supprimer
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

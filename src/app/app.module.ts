@@ -11,6 +11,9 @@ import { AdminModule } from './admin/admin.module';
 import { SharedModule } from './shared/shared.module';
 
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DialogComponent } from './shared/dialog/dialog.component';
 
 @NgModule({
   declarations: [AppComponent],
@@ -31,8 +34,11 @@ import { AppComponent } from './app.component';
       appId: '1:909303268668:web:8dc1487814755278384a39',
     }),
     AngularFireAuthModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  entryComponents: [DialogComponent],
 })
 export class AppModule {}

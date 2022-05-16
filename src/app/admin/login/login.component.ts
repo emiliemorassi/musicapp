@@ -25,8 +25,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(form: NgForm): void {
-    console.log(form);
-    console.log(form.value);
+    // console.log(form);
+    // console.log(form.value);
     this.authService
       .auth(form.value['email'], form.value['password'])
       .then(() => {

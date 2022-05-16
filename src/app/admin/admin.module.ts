@@ -7,6 +7,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AddAlbumComponent } from './dashboard/add-album/add-album.component';
 import { NotFoundComponent } from '../shared/notfound/notfound.component';
 import { ListAlbumComponent } from './dashboard/list-album/list-album.component';
+import { EditAlbumComponent } from './dashboard/edit-album/edit-album.component';
+import { AlertDialogComponent } from './alert-dialog/alert-dialog.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -14,6 +18,8 @@ import { ListAlbumComponent } from './dashboard/list-album/list-album.component'
     DashboardComponent,
     AddAlbumComponent,
     ListAlbumComponent,
+    EditAlbumComponent,
+    AlertDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -31,10 +37,15 @@ import { ListAlbumComponent } from './dashboard/list-album/list-album.component'
             path: 'listalbums',
             component: ListAlbumComponent,
           },
+          {
+            path: 'edit/:id',
+            component: EditAlbumComponent,
+          },
         ],
       },
       { path: '**', component: NotFoundComponent },
     ]),
+    MatDialogModule,
   ],
   exports: [LoginComponent, DashboardComponent],
 })

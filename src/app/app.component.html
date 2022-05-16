@@ -15,7 +15,12 @@
           </a>
         </li>
         <li *ngIf="auth.authentificated() == true" class="nav-item active">
-          <a class="nav-link" routerLink="/dashboard">Dashboard </a>
+          <a
+            class="nav-link"
+            routerLink="/dashboard"
+            routerLinkActive="linkActive"
+            >Dashboard
+          </a>
         </li>
         <li *ngIf="auth.authentificated() == false" class="nav-item active">
           <a class="nav-link" routerLink="" routerLinkActive="linkActive"

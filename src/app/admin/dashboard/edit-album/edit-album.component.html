@@ -1,4 +1,4 @@
-<h2>Ajouter un album</h2>
+<h2>Modifier un album</h2>
 <form [formGroup]="albumForm" (ngSubmit)="submit()">
   <div class="form-group">
     <label for="ref">Référence</label>
@@ -108,14 +108,9 @@
       class="btn btn-outline-success my-2 my-sm-0"
       type="submit"
       [disabled]="albumForm.invalid"
-      (click)="openAlertDialog()"
+      (click)="openDialog()"
     >
       Valider
     </button>
   </div>
 </form>
-
-<ng-template #dialogRef let-myData>
-  <h3>Album ajouté</h3>
-  <button mat-button>Ok</button>
-</ng-template>

@@ -19,40 +19,24 @@ export class AlbumsComponent implements OnInit {
   status: string = '';
   count: any;
 
-  constructor(private albumService: AlbumService) {
-    // this.albumService.getAllAlbums();
-    // console.log(this.albumService.count());
-    // console.log(
-    //   this.albumService
-    //     .getAllAlbums()
-    //     .subscribe((albums) => console.log('-*-*-*-*---*', albums))
-    // );
-  }
+  constructor(private albumService: AlbumService) {}
 
   ngOnInit(): void {
-    // this.albums = this.albumService.paginate(0, 5);
     this.albumService.paginate(0, 5).subscribe((albums) => {
-      console.log(albums);
-
       this.albums = albums;
     });
     this.count = this.albumService
       .count()
       .subscribe((count) => (this.count = count));
-    console.log(this.count);
   }
 
   onSelect(album: Album): void {
     this.selectedAlbum = album;
+    // console.log(this.selectedAlbum);
   }
 
-  // playParent(album: Album): void {
-  //   this.playingAlbum = album.id;
-  // }
   playParent($event: Album) {
     this.status = $event.id;
-    console.log($event);
-    // console.log($event.id);
     this.albumService.switchOn($event);
   }
 
@@ -62,9 +46,6 @@ export class AlbumsComponent implements OnInit {
     }
   }
 
-  // paginate(album: { start: number; end: number }) {
-  //   this.albums = this.albumService.paginate(album.start, album.end);
-  // }
   paginate(album: { start: number; end: number }) {
     this.albumService
       .paginate(album.start, album.end)
